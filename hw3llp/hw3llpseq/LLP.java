@@ -50,17 +50,14 @@ public class LLP {
 	}
 	
 	public void OptBst() {
-		System.out.println(test);
-		int start = 0;
-		int nodes = 4;
-		Integer[][]WIn = new Integer[][] { {0,1,2,0},
-										   {1,0,0,3},
-										   {2,0,0,4},
-										   {0,3,4,0}};
-		LlpOptimalBst llpbst = new LlpOptimalBst(WIn, nodes, start);
-		llpbst.printG();
-		llpbst.printW();
+		System.out.println("Optimal Binary Search Tree");
 
+		//  keys are the index of a given symbol
+		Integer[] symbols = {10, 12, 16,  21};  // sorted
+		Integer[] p = {4, 2, 6, 3};  // frequency of keys
+
+		LlpOptimalBst llpbst = new LlpOptimalBst(symbols, p);
+		llpbst.LlpRun();
 	}
 	
 	public void Prim() {
@@ -86,7 +83,7 @@ public class LLP {
 		LLP l = new LLP();
 		//l.ppx();
 		//l.bellman();
-		l.Prim();
-		
+//		l.Prim();
+		l.OptBst();
 	}
 }
