@@ -16,9 +16,9 @@ public class LlpPrim {
 	
 	int n;
 	
-	public LlpPrim(Integer[][] WInput, int nodes) {
+	public LlpPrim(Integer[][] WInput) {
 		//Pre = PreInput;
-		n = nodes;
+		n = WInput[0].length;
 		
 		W = WInput;
 		G = new Integer[n];
@@ -34,7 +34,7 @@ public class LlpPrim {
 		initialize ();
 		
 		updateEpAndHeap();
-		printEp();
+		//printEp();
 	}
 	
 	public void initialize() {
@@ -124,7 +124,7 @@ public class LlpPrim {
 	
 	private void ensure(int j) {
 
-		System.out.println("ensure");
+		//System.out.println("ensure");
 
 		if (Fixed[j] == 1) {
 			return;
@@ -137,6 +137,10 @@ public class LlpPrim {
 			if (Fixed[i] == 0) {
 				continue;
 			}
+			if (Ep.size() == 0) {
+				continue;
+			}
+			
 			
 			int minEdge = Ep.peek();
 			
@@ -146,10 +150,8 @@ public class LlpPrim {
 				Ep.poll();
 				
 				updateEpAndHeap();
-				printEp();
-				
-				//ret = true;
-				//return true;
+				//printEp();
+
 				//System.out.println("1");
 			}
 		}	
@@ -188,12 +190,6 @@ public class LlpPrim {
 		}
 	}
 	
-	public void printFixed() {
-		System.out.println("Fixed: ");
-		for(int i = 0; i < Fixed.length; i++) {
-			System.out.println(Fixed[i]);
-		}
-	}
 	
 	void printEp() {
 		System.out.println("E' : ");
@@ -203,24 +199,6 @@ public class LlpPrim {
 				System.out.print(",");
 			}
 			System.out.println(" ");
-		}
-	}
-	
-	public void printW() {
-		System.out.println("W: ");
-		for(int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				System.out.print(W[i][j]);
-				System.out.print(",");
-			}
-			System.out.println(" ");
-		}
-	}
-	
-	public void printG() {
-		System.out.println("G: ");
-		for(int i = 0; i < n; i++) {
-			System.out.println(G[i]);
 		}
 	}
 	

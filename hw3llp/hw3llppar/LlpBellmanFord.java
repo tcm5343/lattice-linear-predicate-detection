@@ -10,9 +10,10 @@ public class LlpBellmanFord {
 	ArrayList<Thread> ensureThreads;
 	int n;
 	
-	public LlpBellmanFord(Integer[][] WInput, int nodes, int start) {
+	public LlpBellmanFord(Integer[][] WInput, int start) {
 		
-		n = nodes;
+		n = WInput[0].length;
+		//System.out.println("nodes: "+n);
 		
 		W = WInput;
 		Pre = new Integer[n][n];
@@ -52,16 +53,6 @@ public class LlpBellmanFord {
 		}
 	}
 	
-	private int getMinWeight(int j) {
-		int minWeight = Integer.MAX_VALUE;
-		for(int i = 0; i < W[j].length; i++) {
-			if (W[i][j] < minWeight){
-				minWeight = W[i][j];
-			}
-		}
-		return minWeight;
-	}
-	
 	private boolean forbidden(int j) {
 		// 1
 		
@@ -99,7 +90,7 @@ public class LlpBellmanFord {
 			
 			// 1
 			if ((G[j] > G[i] + W[i][j]) && (Pre[i][j] == 1) && G[i] != Integer.MAX_VALUE) {
-				printDebug(i,j,G[i],G[j],W[i][j]);
+				//printDebug(i,j,G[i],G[j],W[i][j]);
 				G[j] = G[i] + W[i][j];
 				//System.out.println("1");
 			}
@@ -136,35 +127,6 @@ public class LlpBellmanFord {
 	private void StopEnsureThreads() {
 		for (int i = 0; i < ensureObjects.size(); i++) {
 			ensureObjects.get(i).done = true;
-		}
-	}
-	
-	public void printPre() {
-		System.out.println("Pre: ");
-		for(int i = 0; i < n; i++) {
-			for(int j = 0; j < Pre.length; j++) {
-				System.out.print(Pre[i][j]);
-				System.out.print(",");
-			}
-			System.out.println();
-		}
-	}
-	
-	public void printW() {
-		System.out.println("W: ");
-		for(int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				System.out.print(W[i][j]);
-				System.out.print(",");
-			}
-			System.out.println(" ");
-		}
-	}
-	
-	public void printG() {
-		System.out.println("G: ");
-		for(int i = 0; i < n; i++) {
-			System.out.println(G[i]);
 		}
 	}
 	

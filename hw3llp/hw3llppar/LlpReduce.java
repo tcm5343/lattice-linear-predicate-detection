@@ -27,6 +27,9 @@ public class LlpReduce {
 	}
 	
 	private boolean forbidden(int j) {
+		if (j == 0) {
+			return false;
+		}
 		// 1
 		if ((1 <= j) && (j < n/2)) {
 			if (G[j] < G[2*j] + G[2*j+1]){
@@ -104,25 +107,11 @@ public class LlpReduce {
 		}
 	}
 	
-	public void printA() {
-		System.out.println("A: ");
-		for(int i = 0; i < A.length; i++) {
-			System.out.println(A[i]);
-		}
-	}
-	
-	public void printG() {
-		System.out.println("G: ");
-		for(int i = 0; i < G.length; i++) {
-			System.out.println(G[i]);
-		}
-	}
-	
 	public void LlpRun() {
 		StartEnsureThreads();
 		while(isAnyForbidden()) {}
 		
-		System.out.println("done");
+		//System.out.println("done");
 		try {
 			Thread.sleep(200);
 			StopEnsureThreads();

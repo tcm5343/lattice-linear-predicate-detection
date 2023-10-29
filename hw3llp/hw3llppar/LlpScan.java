@@ -65,7 +65,7 @@ public class LlpScan {
 	private boolean isAnyForbidden() {
 		for(int i = 0; i < n; i++) {
 			if (forbidden(i)) {
-				System.out.println("Forbidden: " + i);
+				//System.out.println("Forbidden: " + i);
 				return true;
 			}
 		}
@@ -137,27 +137,13 @@ public class LlpScan {
 			ensureObjects.get(i).done = true;
 		}
 	}
-
 	
-	public void printA() {
-		System.out.println("A: ");
-		for(int i = 0; i < A.length; i++) {
-			System.out.println(A[i]);
+	public Integer[] getExclusiveG() {
+		Integer[] ExclusiveG = new Integer[n];
+		for(int i = n; i < G.length; i++) {
+			ExclusiveG[i-n] = G[i];
 		}
-	}
-	
-	public void printS() {
-		System.out.println("S: ");
-		for(int i = 0; i < S.length; i++) {
-			System.out.println(S[i]);
-		}
-	}
-	
-	public void printG() {
-		System.out.println("G: ");
-		for(int i = 0; i < G.length; i++) {
-			System.out.println(G[i]);
-		}
+		return ExclusiveG;
 	}
 	
 	public void LlpRun() {
