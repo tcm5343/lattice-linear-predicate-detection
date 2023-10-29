@@ -1,13 +1,13 @@
 package hw3llppar;
 
-import java.util.ArrayList;
-
 public class LLP {
 	String test;
-	Integer[][] G;
 
 	public LLP() {
 		test = "LLP";
+	}
+	public void test() {
+		System.out.println(test);
 	}
 	
 	public void printArr(Integer[] G, String str) {
@@ -117,13 +117,19 @@ public class LLP {
 	
 	public static void main(String args[]) {
 		LLP l = new LLP();
+		l.test();
 		
+		//
 		//PPx
+		//
 		//l.printArr(l.ppx(new Integer[] {1,2,3,4,5,6,7,8}),"PPx G");
 
 		
+		
+		//
+		//Bellman Ford
+		//
 		/*
-		//Bellman Ford	
 		l.printArr(l.bellman(new Integer[][] { {0,1,2,0},
 			   									{0,0,0,3},
 			   									{0,0,0,4},
@@ -131,8 +137,9 @@ public class LLP {
 												0),"Bellman G");
 		 */
 		
-		
+		//
 		// Prim
+		//
 		/*
 		l.printArr(l.Prim(new Integer[][] { 
 			{0,6,5,7},

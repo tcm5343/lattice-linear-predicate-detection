@@ -1,4 +1,9 @@
 package hw3llppar;
+//
+// WIP
+//
+// ToDo: Don't duplicate so much code
+//
 
 public abstract class LlpAlg {
 
