@@ -74,19 +74,18 @@ public class LLP {
 
 	}
 	
-	public void OptBst() {
-		System.out.println(test);
-		int start = 0;
-		int nodes = 4;
-		Integer[][]WIn = new Integer[][] { {0,1,2,0},
-										   {1,0,0,3},
-										   {2,0,0,4},
-										   {0,3,4,0}};
-		LlpOptimalBst llpbst = new LlpOptimalBst(WIn, nodes, start);
-		llpbst.printG();
-		llpbst.printW();
-		
+	public Integer[][] OptBst() {
+		System.out.println("Optimal BST");
 
+		Integer[] P = new Integer[] {3,1,2,5};
+
+		LlpOptimalBst llpbst = new LlpOptimalBst(P);
+		printArr(llpbst.P, "P");
+		printArr2d(llpbst.G, "G");
+		
+		llpbst.LlpRun();
+		
+		return(llpbst.G);
 	}
 	
 	public Integer[] Prim(Integer[][]WIn) {
@@ -147,6 +146,8 @@ public class LLP {
 			{5,0,0,8},
 			{7,4,8,0}}),"Prim G");*/
 		
+		
+		l.printArr2d(l.OptBst(), "OptBst");
 		
 		System.out.println("main done:");
 		//System.exit(0);
