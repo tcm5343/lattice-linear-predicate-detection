@@ -42,8 +42,11 @@ public class LlpOptimalBst {
 	}
 	
 	private int getMinIkJ (int i, int j) {
-		int min = G[i][i] + S(i,j) + G[j][j];
-//		int min = 999999;
+		if (i+1 >= n) {
+			return 0;
+		}
+		int min = G[i][i] + S(i,j) + G[i+1][j];
+
 		for (int k = i; k < j; k++) {
 			int m = G[i][k] + S(i,j) + G[k][j];
 			if (m < min) {

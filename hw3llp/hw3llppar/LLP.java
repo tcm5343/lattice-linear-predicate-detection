@@ -27,6 +27,17 @@ public class LLP {
 		}
 	}
 	
+	public void printArr2dOpt(Integer[][] G, String str) {
+		System.out.println(str + ": ");
+		for(int j = 0; j < G.length; j++) {
+			for (int i = 0; i < G.length;i++) {
+				System.out.print(G[i][j]);
+				System.out.print(",");
+			}
+			System.out.println(" ");
+		}
+	}
+	
 	
 	public Integer[] ppx(Integer[] AInput) {
 		System.out.println("Reduce and PPx");
@@ -74,14 +85,12 @@ public class LLP {
 
 	}
 	
-	public Integer[][] OptBst() {
+	public Integer[][] OptBst(Integer[] P) {
 		System.out.println("Optimal BST");
 
-		Integer[] P = new Integer[] {34, 8, 50};
-
 		LlpOptimalBst llpbst = new LlpOptimalBst(P);
-		printArr(llpbst.P, "P");
-		printArr2d(llpbst.G, "G");
+		//printArr(llpbst.P, "P");
+		//printArr2d(llpbst.G, "G");
 		
 		llpbst.LlpRun();
 		
@@ -116,8 +125,7 @@ public class LLP {
 	
 	public static void main(String args[]) {
 		LLP l = new LLP();
-//		l.test();
-		l.OptBst();
+		l.test();
 		
 		//
 		//PPx
@@ -148,7 +156,9 @@ public class LLP {
 			{7,4,8,0}}),"Prim G");*/
 		
 		
-		l.printArr2d(l.OptBst(), "OptBst");
+		l.printArr2d(l.OptBst(new Integer[] {34,50}), "OptBst");
+		l.printArr2d(l.OptBst(new Integer[] {34, 8, 50}), "OptBst");
+
 		
 		System.out.println("main done:");
 		//System.exit(0);
