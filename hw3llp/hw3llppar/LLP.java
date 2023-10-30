@@ -156,8 +156,8 @@ public class LLP {
 			{7,4,8,0}}),"Prim G");*/
 		
 		
-		l.printArr2d(l.OptBst(new Integer[] {34,50}), "OptBst");
-		l.printArr2d(l.OptBst(new Integer[] {34, 8, 50}), "OptBst");
+		//l.printArr2d(l.OptBst(new Integer[] {34,50}), "OptBst");
+		//l.printArr2d(l.OptBst(new Integer[] {34, 8, 50}), "OptBst");
 
 		
 		System.out.println("main done:");

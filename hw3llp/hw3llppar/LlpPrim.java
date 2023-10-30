@@ -100,6 +100,10 @@ public class LlpPrim {
 	
 	private boolean forbidden(int j) {
 		// 1
+		if (Ep.size() == 0) {
+			return false;
+		}
+		
 		
 		int minEdge = Ep.peek();
 		
@@ -203,11 +207,12 @@ public class LlpPrim {
 	}
 	
 	public void LlpRun() {
-		StartEnsureThreads();
-		while(isAnyForbidden()) {}
-		
-		System.out.println("done");
 		try {
+			StartEnsureThreads();
+			while(isAnyForbidden()) {Thread.sleep(100);}
+		
+			System.out.println("done");
+		
 			Thread.sleep(200);
 			StopEnsureThreads();
 			Thread.sleep(500);

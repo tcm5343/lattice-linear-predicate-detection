@@ -151,4 +151,43 @@ public class LlpTestCases {
         assertArrayEquals(new Integer[] {5,6,5,4}, G);
     }
     
+    //
+	// Opt BST Test
+	//
+    @Test public void testObst1_0() {
+		LLP l = new LLP();
+		
+		Integer[] P = new Integer[] {34,50};
+		Integer Exp = 118;
+        Integer[][] G = l.OptBst(P);
+        assertEquals(Exp, G[0][P.length-1]);
+    }
+    
+    @Test public void testObst1_1() {
+		LLP l = new LLP();
+		
+		Integer[] P = new Integer[] {34,8,50};
+		Integer Exp = 142;
+        Integer[][] G = l.OptBst(P);
+        assertEquals(Exp, G[0][P.length-1]);
+    }
+    
+    @Test public void testObst1_2() {
+		LLP l = new LLP();
+		
+		Integer[] P = new Integer[] {4,2,6,3};
+		Integer Exp = 26;
+        Integer[][] G = l.OptBst(P);
+        assertEquals(Exp, G[0][P.length-1]);
+    }
+    
+    @Test public void testObst1_3() {
+		LLP l = new LLP();
+		
+		Integer[] P = new Integer[] {25,20,5,20,30};
+		Integer Exp = 115;
+        Integer[][] G = l.OptBst(P);
+        assertEquals(Exp, G[0][P.length-1]);
+    }
+  
 }
