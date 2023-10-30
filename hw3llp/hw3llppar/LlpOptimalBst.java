@@ -33,22 +33,24 @@ public class LlpOptimalBst {
 	}
 	
 	private int S(int i, int j) {
+		if (i > j) { return 0; }
 		int sum = 0;
-		for(int k = i; k < j; k++) {
-			sum+=P[k];
+		for(; i < j; i++) {
+			sum+=P[i];
 		}
 		return sum;
 	}
 	
 	private int getMinIkJ (int i, int j) {
 		int min = G[i][i] + S(i,j) + G[j][j];
-		
+//		int min = 999999;
 		for (int k = i; k < j; k++) {
 			int m = G[i][k] + S(i,j) + G[k][j];
 			if (m < min) {
-				m = min;
+				min = m;
 			}
 		}
+		if (i >= j) {return 0;}
 		return min;
 	}
 	
@@ -86,6 +88,7 @@ public class LlpOptimalBst {
 		//System.out.println("ensure");
 		//printDebug(i,j,G[i][j]);
 		int minIkJ = getMinIkJ(i,j);
+//		System.out.println(minIkJ);
 		if (G[i][j] < minIkJ) {
 			G[i][j] = minIkJ;
 			//System.out.println("1");

@@ -77,7 +77,7 @@ public class LLP {
 	public Integer[][] OptBst() {
 		System.out.println("Optimal BST");
 
-		Integer[] P = new Integer[] {3,1,2,5};
+		Integer[] P = new Integer[] {34, 8, 50};
 
 		LlpOptimalBst llpbst = new LlpOptimalBst(P);
 		printArr(llpbst.P, "P");
@@ -116,7 +116,8 @@ public class LLP {
 	
 	public static void main(String args[]) {
 		LLP l = new LLP();
-		l.test();
+//		l.test();
+		l.OptBst();
 		
 		//
 		//PPx
