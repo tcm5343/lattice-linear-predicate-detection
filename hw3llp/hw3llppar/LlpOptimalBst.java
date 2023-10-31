@@ -3,6 +3,7 @@ package hw3llppar;
 public class LlpOptimalBst {
 	Integer P[];
 	Integer G[][];
+	Integer mininit[][];
 	EnsureObj ensureObjects[][];
 	Thread ensureThreads[][];
 	
@@ -12,6 +13,7 @@ public class LlpOptimalBst {
 		P = PInput;
 		n = P.length;
 		G = new Integer[n][n];
+		mininit = new Integer[n][n];
 		
 		ensureObjects = new EnsureObj[n][n];
 		ensureThreads = new Thread[n][n];
@@ -26,6 +28,7 @@ public class LlpOptimalBst {
 				if (i == j) {
 					G[i][j] = P[i];
 				}
+				mininit[i][j] = 0;
 				ensureObjects[i][j] = new EnsureObj(i,j);
 				ensureThreads[i][j] = new Thread(ensureObjects[i][j]);
 			}
@@ -33,27 +36,44 @@ public class LlpOptimalBst {
 	}
 	
 	private int S(int i, int j) {
-		if (i > j) { return 0; }
+		//if (i > j) { return 0; }
+
 		int sum = 0;
-		for(; i < j; i++) {
-			sum+=P[i];
+		
+		for(int k = i; k <= j; k++) {
+			sum+=P[k];
 		}
+		
 		return sum;
 	}
 	
-	private int getMinIkJ (int i, int j) {
-		if (i >= j) {return 0;}
-
-		if (i >= n) {
-			return 0;
+	private int getTreeValue(int i, int j, int k) {
+		int kj = k-1;
+		int ki = k+1;
+		
+		if (kj < 0) {
+			//kj=0;
+			return /*G[i][i] + */S(i,j) + G[ki][j];
 		}
 		
+		if (ki >= n) {
+			ki=n-1;
+			return G[i][kj] + S(i,j) /*+ G[j][j]*/;
+		}
+		
+		return G[i][kj] + S(i,j) + G[ki][j];
+	}
+	
+	private int getMinIkJ (int i, int j) {
+				
 		int min;
 
-		min = G[i][i] + S(i,j) + G[i][j];
+		min = getTreeValue(i,j,i);
+		mininit[i][j] = min;
 
-		for (int k = i; k < j; k++) {
-			int m = G[i][k] + S(i,j) + G[k+1][j];
+		for (int k = i; k <= j; k++) {
+
+			int m = getTreeValue(i,j,k);
 			if (m < min) {
 				min = m;
 			}
@@ -65,6 +85,8 @@ public class LlpOptimalBst {
 	
 	private boolean forbidden(int i, int j) {
 		// 1
+		
+		if (i >= j) { return false; }
 		
 		int minIkJ = getMinIkJ(i,j);
 		if (G[i][j] < minIkJ) {
@@ -92,7 +114,7 @@ public class LlpOptimalBst {
 	}
 	
 	private void ensure(int i, int j) {
-
+		if (i >= j) { return; }
 		//System.out.println("ensure");
 		//printDebug(i,j,G[i][j]);
 		int minIkJ = getMinIkJ(i,j);
@@ -117,7 +139,6 @@ public class LlpOptimalBst {
 
 		@Override
 		public void run() {
-
 			while(!done) {
 				ensure(i,j);
 			}
@@ -131,6 +152,7 @@ public class LlpOptimalBst {
 				ensureThreads[i][j].start();
 			}
 		}
+		//ensureThreads[0][1].start();
 	}
 	
 	private void StopEnsureThreads() {
@@ -139,6 +161,7 @@ public class LlpOptimalBst {
 				ensureObjects[i][j].done = true;
 			}
 		}
+		//ensureObjects[0][1].done = true;;
 	}
 	
 	public void LlpRun() {

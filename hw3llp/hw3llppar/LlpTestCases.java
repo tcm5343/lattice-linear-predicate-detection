@@ -185,7 +185,7 @@ public class LlpTestCases {
 		LLP l = new LLP();
 		
 		Integer[] P = new Integer[] {25,20,5,20,30};
-		Integer Exp = 115;
+		Integer Exp = 210;
         Integer[][] G = l.OptBst(P);
         assertEquals(Exp, G[0][P.length-1]);
     }

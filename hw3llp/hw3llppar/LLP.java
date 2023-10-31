@@ -2,6 +2,7 @@ package hw3llppar;
 
 public class LLP {
 	String test;
+	LlpOptimalBst llpbst;
 
 	public LLP() {
 		test = "LLP";
@@ -88,7 +89,7 @@ public class LLP {
 	public Integer[][] OptBst(Integer[] P) {
 		System.out.println("Optimal BST");
 
-		LlpOptimalBst llpbst = new LlpOptimalBst(P);
+		llpbst = new LlpOptimalBst(P);
 		//printArr(llpbst.P, "P");
 		//printArr2d(llpbst.G, "G");
 		
@@ -158,6 +159,10 @@ public class LLP {
 		
 		//l.printArr2d(l.OptBst(new Integer[] {34,50}), "OptBst");
 		//l.printArr2d(l.OptBst(new Integer[] {34, 8, 50}), "OptBst");
+		//l.printArr2d(l.OptBst(new Integer[] {4, 2, 6,3}), "OptBst");
+		//l.printArr2d(l.OptBst(new Integer[] {25,20,5,20,30}), "OptBst");
+		//l.printArr2d(l.llpbst.mininit,"minint");
+		
 
 		
 		System.out.println("main done:");
