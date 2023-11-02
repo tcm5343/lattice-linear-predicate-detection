@@ -5,13 +5,24 @@ Brian Eubanks - be6363
 
 Tom Miller - tm37479
 
+## Overview
+
+We implemented most of the algorithms sequentially first. This allowed us to get familiar with the LLP idea template without having to worry about and debug threads. (These are in the hw3llpseq directory)
+
+
+
+
 ## Files - hw3llppar
 These are parallel implementation of the LLP algorithms
- * LLP.java  - main file
- * LlpAlg.java - abstract class definition template(unused)
+
+ * LlpTestCases.java - JUnit Test cases for PPx, Prim, BellmanFord, and OBST
+   
+ * LLP.java  - Main executable file. (Test cases are commented out)
+   
+ * LlpAlg.java - abstract class definition template (unused)
 
  * LlpBellmanFord.java - BellmanFord
- * 
+   
  * LlpOptimalBst.java - OBST algorithm
 
  * LlpPrim.java - Prims algorithm
@@ -19,8 +30,6 @@ These are parallel implementation of the LLP algorithms
  * LlpReduce.java - LLP Reduce. Helper for LlpScan
 
  * LlpScan.java - LLP PPx Scan. 
-
- * LlpTestCases.java - Test cases for PPx, Prim, BellmanFord, and OBST
 
 
 ## LLP Generic Functions and File Structure
