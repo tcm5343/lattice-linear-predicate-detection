@@ -4,7 +4,7 @@ A Java application to solve PPx, BellmanFord, Prim, and OptimalBST using Lattice
 ## Files - hw3llppar
 These are parallel implementation of the LLP algorithms
  * LLP.java  - main file
- * LlpAlg.java - abstract definition (unused)
+ * LlpAlg.java - abstract class definition template(unused)
 
  * LlpBellmanFord.java - BellmanFord
  * 
