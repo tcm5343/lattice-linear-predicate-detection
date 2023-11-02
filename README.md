@@ -1,6 +1,8 @@
 # Lattice Linear Predicate HW3
 A Java application to solve PPx, BellmanFord, Prim, and OptimalBST using Lattice-Linear Predicate algorithms.
+
 Brian Eubanks - be6363
+
 Tom Miller - tm37479
 
 ## Files - hw3llppar
